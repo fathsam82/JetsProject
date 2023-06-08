@@ -1,4 +1,5 @@
 package com.skilldistillery.jets.app;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -10,75 +11,83 @@ import com.skilldistillery.jets.entities.PassengerJet;
 
 public class JetsApp {
 	protected AirField af = new AirField();
-	
-	public static void main(String[] args) {
-		Scanner sc = new Scanner(System.in);
-		JetsApp ja = new JetsApp();
-		ja.run(sc);
-		//FighterJet fighterJet1 = new FighterJet();
-		//FighterJet fighterJet2 = new FighterJet();
-		//PassengerJet passengerJet1 = new PassengerJet();
-		//PassengerJet passengerJet2 = new PassengerJet();
-		//CargoPlane cargoPlane = new CargoPlane();
-	
-	}
-	
-	public void run(Scanner sc) {
-		System.out.println("Please choose a choice from the menu");
-		
+	Scanner sc = new Scanner(System.in);
 
-		userMenu();
+	public static void main(String[] args) {
+		JetsApp ja = new JetsApp();
+		ja.run();
+
+	}
+
+	public void run() {
+		System.out.println("Please choose a choice from the menu");
 		boolean running = true;
-		boolean done = false;
 		while (running) {
 			userMenu();
 			String choice = sc.nextLine();
-			//String choice = "0";
+			// String choice = "0";
 			switch (choice) {
 
 			case "1":
-				listFleet(toString());
+				af.listFleet();
 				break;
-		/*	case "2":
-				flyAllJets();
+				
+			case "2":
+				af.flyAllJets();
 				break;
+
 			case "3":
-				fastestJet(fleet);
+				af.fastestJet();
 				break;
+				
 			case "4":
-				viewJetWithLongestRange(fleet);
+				af.longestRangeJet();
+				break;
+				
 			case "5":
-				loadCargo();
+				af.loadPlanes();
 				break;
+
 			case "6":
-				fight ();
+				af.fightPlanes();
 				break;
+
 			case "7":
-				addAJetToFleet(fleet);
+				addAJetToFleet();
 				break;
+
 			case "8":
-				removeAJetFromFleet(fleet);
-				break;*/
+				removeAJetFromFleet();
+				break;
+
 			case "9":
-				System.out.println("Exit");
+				System.out.println("Program has ended");
+				running = false;
 				break;
 			}
-		}
-		
-		done = true;
 		}
 
-	public void listFleet(String string) {
-		for (int i = 0; i < string.length(); i++) {
-			if (string != null) {
-				System.out.println(string.toString());
-			}
-		}
 	}
-	
-//	public String toString() {
-//		return super.toString();
-//	}
+
+	public void addAJetToFleet() {
+		System.out.println("Enter model");
+		String typeModel = sc.nextLine();
+		System.out.println("Enter speed");
+		double speed = sc.nextDouble();
+		System.out.println("Enter range");
+		int range = sc.nextInt();
+		System.out.println("Enter price");
+		long price = sc.nextLong();
+		af.addJet(typeModel, speed, range, price);
+	}
+
+	public void removeAJetFromFleet() {
+		af.listFleet();
+		System.out.println("Enter number to remove: ");
+		int choice = sc.nextInt();
+		sc.nextLine();
+		af.removeJet(choice);
+	}
 
 	public void userMenu() {
 		System.out.println();
@@ -89,7 +98,7 @@ public class JetsApp {
 		System.out.println("|    3. View fastest jet                    |");
 		System.out.println("|    4. View jet with longest range         |");
 		System.out.println("|    5. Load all cargo jets                 |");
-		System.out.println("|	 6. Dogfight                            |");
+		System.out.println("|    6. Dogfight                            |");
 		System.out.println("|    7. Add a jet to Fleet                  |");
 		System.out.println("|    8. Remove a jet from Fleet             |");
 		System.out.println("|    9. Quit program                        |");

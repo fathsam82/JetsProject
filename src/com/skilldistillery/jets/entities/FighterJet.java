@@ -11,14 +11,6 @@ public class FighterJet extends Jet implements CombatReady {
 	}
 
 	@Override
-	public void fly(double speed, int range) {
-		super.fly();
-		double z = (range/speed);
-		return;
-		
-	}
-
-	@Override
 	public String getModel() {
 
 		return super.getModel();

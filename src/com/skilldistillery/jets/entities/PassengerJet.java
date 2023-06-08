@@ -2,90 +2,78 @@ package com.skilldistillery.jets.entities;
 
 public class PassengerJet extends Jet {
 
-public PassengerJet() {
-	
-}
+	public PassengerJet() {
 
-@Override
-public void fly(double speed, int range) {
-	super.fly();
-	double z = (range/speed);
-	return;
-}
+	}
 
-@Override
-public String getModel() {
-	
-	return super.getModel();
-}
+	@Override
+	public String getModel() {
 
-@Override
-public void setModel(String model) {
-	
-	super.setModel(model);
-}
+		return super.getModel();
+	}
 
-@Override
-public double getSpeed() {
-	
-	return super.getSpeed();
-}
+	@Override
+	public void setModel(String model) {
 
-@Override
-public void setSpeed(double speed) {
-	
-	super.setSpeed(speed);
-}
+		super.setModel(model);
+	}
 
-@Override
-public int getRange() {
-	
-	return super.getRange();
-}
+	@Override
+	public double getSpeed() {
 
-@Override
-public void setRange(int range) {
-	
-	super.setRange(range);
-}
+		return super.getSpeed();
+	}
 
-@Override
-public long getPrice() {
-	
-	return super.getPrice();
-}
+	@Override
+	public void setSpeed(double speed) {
 
-@Override
-public void setPrice(long price) {
-	
-	super.setPrice(price);
-}
+		super.setSpeed(speed);
+	}
 
-@Override
-public int hashCode() {
-	
-	return super.hashCode();
-}
+	@Override
+	public int getRange() {
 
-@Override
-public boolean equals(Object obj) {
-	
-	return super.equals(obj);
-}
+		return super.getRange();
+	}
 
-@Override
-public String toString() {
-	
-	return super.toString();
-}
+	@Override
+	public void setRange(int range) {
 
-public PassengerJet(String model, double speed, int range, long price) {
-	super(model, speed, range, price);
-}
+		super.setRange(range);
+	}
 
+	@Override
+	public long getPrice() {
 
+		return super.getPrice();
+	}
 
+	@Override
+	public void setPrice(long price) {
 
+		super.setPrice(price);
+	}
 
+	@Override
+	public int hashCode() {
+
+		return super.hashCode();
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+
+		return super.equals(obj);
+	}
+
+	@Override
+	public String toString() {
+
+		return super.toString();
+	}
+
+	public PassengerJet(String model, double speed, int range, long price) {
+		super(model, speed, range, price);
+	}
 
 }

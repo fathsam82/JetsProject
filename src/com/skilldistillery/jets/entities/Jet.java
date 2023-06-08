@@ -1,15 +1,12 @@
 package com.skilldistillery.jets.entities;
-import java.util.ArrayList;
+
 import java.util.Objects;
-
-
 
 public abstract class Jet {
 	protected String model;
 	protected double speed;
 	protected int range;
 	protected long price;
-
 
 	public Jet(String model, double speed, int range, long price) {
 		this.model = model;
@@ -18,13 +15,12 @@ public abstract class Jet {
 		this.price = price;
 	}
 
-	
 	public Jet() {
-		
+
 	}
-	
-	public void fly() {
-		
+
+	public void Fly() {
+
 	}
 
 	public String getModel() {
@@ -37,6 +33,7 @@ public abstract class Jet {
 
 	public double getSpeed() {
 		return speed;
+
 	}
 
 	public void setSpeed(double speed) {
@@ -82,8 +79,4 @@ public abstract class Jet {
 		return "Jet [model=" + model + ", speed=" + speed + ", range=" + range + ", price=" + price + "]";
 	}
 
-
-	public void fly(double speed, int range) {
-		
-	}
 }

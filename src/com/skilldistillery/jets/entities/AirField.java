@@ -1,25 +1,96 @@
 package com.skilldistillery.jets.entities;
+
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.skilldistillery.jets.app.JetsApp;
-
-public class AirField {
+public class AirField<E> {
 	protected List<Jet> hangar;
 
 	public AirField() {
 		readJets("jets.txt");
 	}
 
-	public void listFleet(List<Jet> jets) {
-		for (int i = 0; i < jets.size(); i++) {
-			if (jets != null) {
-				System.out.println(jets.toString());
+	public void fightPlanes() {
+		for (Jet jet : hangar) {
+			if (jet instanceof FighterJet) {
+				((FighterJet) jet).fight();
 			}
 		}
+	}
+
+	public void loadPlanes() {
+		for (Jet jet : hangar) {
+			if (jet instanceof CargoPlane) {
+				((CargoPlane) jet).loadCargo();
+			}
+		}
+	}
+
+	public void listFleet() {
+		int counter = 0;
+		for (Jet jet : hangar) {
+
+			System.out.println(counter + " " + jet);
+			counter++;
+		}
+	}
+
+	public void fastestJet() {
+		double topSpeed = 0.0;
+		Jet fastestJet = null;
+
+		for (Jet jet : hangar) {
+
+			if (jet.getSpeed() > topSpeed) {
+				topSpeed = jet.getSpeed();
+				fastestJet = jet;
+
+			}
+		}
+		System.out.println(fastestJet);
+
+	}
+
+	public void flyAllJets() {
+		System.out.println("The jets take off!");
+		double topSpeed = 0.0;
+		int topRange = 0;
+		for (Jet jet : hangar) {
+			System.out.println(jet);
+			topSpeed = jet.getSpeed();
+			topRange = jet.getRange();
+			double timeInAir = topRange / topSpeed;
+			System.out.println(timeInAir + " hours of fly time.");
+
+		}
+
+	}
+
+	public void longestRangeJet() {
+		int topRange = 0;
+		Jet longestRangeJet = null;
+
+		for (Jet jet : hangar) {
+
+			if (jet.getRange() > topRange) {
+				topRange = jet.getRange();
+				longestRangeJet = jet;
+			}
+		}
+		System.out.println(longestRangeJet);
+
+	}
+
+	public void addJet(String model, double speed, int range, long price) {
+		PassengerJet pj = new PassengerJet(model, speed, range, price);
+		hangar.add(pj);
+	}
+
+	public void removeJet(int choice) {
+		hangar.remove(choice);
 	}
 
 	public List<Jet> readJets(String fileName) {
@@ -47,7 +118,7 @@ public class AirField {
 					jet = new PassengerJet(model, speed, range, price);
 				}
 				hangar.add(jet);
-				System.out.println(jet);
+				// System.out.println(jet);
 
 			}
 		} catch (IOException e) {
@@ -56,4 +127,5 @@ public class AirField {
 
 		return hangar;
 	}
+
 }
